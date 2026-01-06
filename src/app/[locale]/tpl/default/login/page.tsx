@@ -13,16 +13,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-interface LoginPageProps {
-  fullPage?: boolean;
-}
-
 /**
  * 登录页面 - 使用 fetch 统一处理请求
  * 如果用户已登录，中间件会自动重定向到首页
- * @param fullPage - 是否使用全屏布局（默认 true）
  */
-export default function LoginPage({ fullPage = true }: LoginPageProps) {
+export default function LoginPage() {
+  const fullPage = true;
   const router = useRouter();
   const searchParams = useSearchParams();
   const loginAction = useAuthStore((state) => state.login);

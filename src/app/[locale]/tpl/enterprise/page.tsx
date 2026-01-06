@@ -1,3 +1,3 @@
 export default function EnterpriseHome() {
-  return <div>Enterprise Template Home9999999</div>;
+  return <div>Enterprise Template Home999</div>;
 }
