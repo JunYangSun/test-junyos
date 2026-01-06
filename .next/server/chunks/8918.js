@@ -1,0 +1,1 @@
+"use strict";exports.id=8918,exports.ids=[8918],exports.modules={28918:a=>{a.exports=JSON.parse('{"title":"Welcome to ADOS","description":"A modern application built with Next.js 15"}')}};

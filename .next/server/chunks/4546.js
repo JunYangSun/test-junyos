@@ -1,0 +1,1 @@
+"use strict";exports.id=4546,exports.ids=[4546],exports.modules={64546:a=>{a.exports=JSON.parse('{"title":"代理列表","description":"管理和查看所有代理信息","totalCount":"(共 {count} 条)","error":"错误:","fetchError":"获取代理列表失败","noData":"暂无代理数据","type":"类型:","createdAt":"创建时间:","updatedAt":"更新时间:","status":{"0":"已停止","1":"运行中","active":"运行中","inactive":"已停止","pending":"待处理"}}')}};

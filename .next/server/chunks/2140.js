@@ -1,0 +1,1 @@
+"use strict";exports.id=2140,exports.ids=[2140],exports.modules={92140:a=>{a.exports=JSON.parse('{"brand":"ADOS","login":"Login","logout":"Logout","register":"Register","welcome":"Welcome","welcomeBack":"Welcome back"}')}};

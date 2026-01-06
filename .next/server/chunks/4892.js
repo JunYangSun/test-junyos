@@ -1,0 +1,1 @@
+"use strict";exports.id=4892,exports.ids=[4892],exports.modules={14892:a=>{a.exports=JSON.parse('{"loginTitle":"登录账号","registerTitle":"注册账号","username":"用户名","password":"密码","loginButton":"登录","registerButton":"注册","goToRegister":"还没有账号？去注册","goToLogin":"已有账号？去登录"}')}};

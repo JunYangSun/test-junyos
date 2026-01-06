@@ -1,0 +1,1 @@
+"use strict";exports.id=9147,exports.ids=[9147],exports.modules={99147:a=>{a.exports=JSON.parse('{"brand":"ADOS","login":"登录","logout":"登出","register":"注册","welcome":"欢迎","welcomeBack":"欢迎回来"}')}};

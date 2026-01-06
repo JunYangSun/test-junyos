@@ -1,0 +1,1 @@
+"use strict";exports.id=5605,exports.ids=[5605],exports.modules={45605:a=>{a.exports=JSON.parse('{"title":"欢迎使用 ADOS","description":"这是一个基于 Next.js 15 的现代化应用"}')}};
