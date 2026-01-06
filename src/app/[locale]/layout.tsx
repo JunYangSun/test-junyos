@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { headers } from "next/headers";
 import { Geist, Geist_Mono } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
@@ -34,27 +33,10 @@ export const viewport = {
 export default async function LocaleLayout({
   children,
   params,
-  tpl_default,
-  tpl_enterprise,
 }: {
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
-  tpl_default: React.ReactNode;
-  tpl_enterprise: React.ReactNode;
 }) {
-  // 在服务端读取 headers
-  const headersList = await headers();
-  const template = headersList.get("x-template") ?? "default";
-  let shell: React.ReactNode;
-  switch (template) {
-    case "enterprise":
-      shell = tpl_enterprise;
-      break;
-    case "default":
-    default:
-      shell = tpl_default;
-  }
-
   const { locale } = await params;
 
   // 验证语言参数
@@ -72,8 +54,7 @@ export default async function LocaleLayout({
       >
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider>
-            {/* 如果 slot 返回 null（通过 default.tsx），则渲染 children（全局页面） */}
-            {shell ?? children}
+            {children}
             <ToastProvider />
           </ThemeProvider>
         </NextIntlClientProvider>

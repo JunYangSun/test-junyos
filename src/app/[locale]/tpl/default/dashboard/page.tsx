@@ -1,4 +1,4 @@
-// src/app/@tpl_default/dashboard/page.tsx
+// src/app/[locale]/tpl/default/dashboard/page.tsx
 export default function Dashboard() {
   return <div>Default Dashboard</div>;
 }

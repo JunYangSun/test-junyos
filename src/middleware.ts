@@ -84,16 +84,21 @@ export default function middleware(request: NextRequest) {
   }
 
   // 3. 执行 i18n 中间件
-  const response = intlMiddleware(request);
+  const intlResponse = intlMiddleware(request);
+  if (intlResponse.headers.get("location")) {
+    return intlResponse;
+  }
 
   // 4. 多模板检测与设置
   let template = request.cookies.get("template")?.value;
+  const templateParam = request.nextUrl.searchParams.get("template");
+  if (templateParam) {
+    template = templateParam;
+  }
 
   if (!template) {
     const host = request.headers.get("host") ?? "";
-    // if (host.startsWith("enterprise.")) template = "enterprise";
-    // else if (host.startsWith("creator.")) template = "creator";
-
+    // TODO: 替换为根据域名查询商户配置的接口
     if (host === "marerex.com") {
       template = "enterprise"; // marerex.com 对应企业版模板
     } else if (host === "junyos.com") {
@@ -103,10 +108,28 @@ export default function middleware(request: NextRequest) {
 
   if (!template) template = "default";
 
-  // 设置 template cookie 和 header
+  const matchedLocale = locales.find((locale) =>
+    pathname === `/${locale}` || pathname.startsWith(`/${locale}/`)
+  );
+  const localePrefix = matchedLocale ? `/${matchedLocale}` : `/${defaultLocale}`;
+  const pathWithoutLocale = matchedLocale ? pathname.slice(localePrefix.length) : pathname;
+
+  if (pathWithoutLocale.startsWith("/tpl/")) {
+    return intlResponse;
+  }
+
+  const url = request.nextUrl.clone();
+  url.pathname = `${localePrefix}/tpl/${template}${pathWithoutLocale || "/"}`;
+
+  const response = NextResponse.rewrite(url);
+
+  for (const cookie of intlResponse.cookies.getAll()) {
+    response.cookies.set(cookie);
+  }
+
   response.cookies.set("template", template, {
     path: "/",
-    httpOnly: true,
+    httpOnly: process.env.NODE_ENV === "production",
   });
 
   response.headers.set("x-template", template);
