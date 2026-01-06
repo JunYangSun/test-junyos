@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm dlx:*)",
+      "Bash(tree:*)",
+      "Bash(mkdir:*)",
+      "Bash(pnpm run dev)",
+      "Bash(grep:*)",
+      "Bash(curl:*)"
+    ]
+  }
+}
